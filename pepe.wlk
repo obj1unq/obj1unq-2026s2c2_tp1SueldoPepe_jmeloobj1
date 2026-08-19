@@ -13,6 +13,8 @@ object pepe {
       sueldo = self.sueldoNeto(categoría) + bonoPorResultadosPepe + bonoPorPresentismoPepe
     }
 
+    
+
 }
 
 object cadete{
