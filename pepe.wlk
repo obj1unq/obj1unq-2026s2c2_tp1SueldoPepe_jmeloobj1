@@ -1,16 +1,19 @@
 object pepe {
-    var sueldo = 0
 
+    var categoria = cadete
+    var bonoPorResultado = bonoNulo
+    var bonoPorPresentismo = BonoNulo
+    var faltas = 0 
     method sueldoNeto(categoría) {
       return categoría.sueldoNeto()
     }
 
-    method sueldoDePepe() {
-      return sueldo
+    method sueldoNeto() {
+      return categoria.sueldoNeto()
     }
 
-    method sueldoDePepe(categoría ,  bonoResultadosPepe, bonoPresentismoPepe) {
-      sueldo = self.sueldoNeto(categoría) + bonoPorResultadosPepe + bonoPorPresentismoPepe
+    method sueldo() {
+      return self.sueldoNeto() + bonoPorResultados.montoPara(self) + bonoPorPresentismo.monto(self)
     }
 
     
@@ -30,52 +33,11 @@ object gerente{
 }
 
 
-object bonoPorResultados {
-  method porPorcentaje(sueldoNeto) {
-    return sueldoNeto/10
-  }
+object 
+object bonoPorPresentismoNormal(empleado) {
 
-  method montoFijo() {
-    return 800
-  }
-
-  method nulo() {
-    return 0
-  }
 }
-
-object bonoPorPresentismo {
-  method normal(faltasDeEmpleado){
-    return if faltasDeEmpleado = 0{
-        2000
-    }
-    else if faltasDeEmpleado = 1{
-        1000
-    }
-    else{
-        0
-    }
-}
-
-method ajuste(faltasDeEmpleado) {
-  return if faltasDeEmpleado = 1{
-    100
-  }
-  else{
-    0
-  }
-}
-
-method demagógico(sueldoNetoEmpleado) {
-  return if sueldoNetoEmpleado < 18000{
-    500
-  }
-  else if sueldoNetoEmpleado > 18000{
-    300
-  }
-}
-
-method nulo() {
-  return 0
-}
+ 
+object  {
+  
 }
