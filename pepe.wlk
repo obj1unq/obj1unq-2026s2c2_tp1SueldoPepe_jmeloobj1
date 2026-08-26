@@ -1,12 +1,10 @@
 object pepe {
 
     var categoria = cadete
-    var bonoPorResultado = bonoPorResultadoPorcentaje
+    var bonoPorResultados = bonoPorResultadoPorcentaje
     var bonoPorPresentismo = bonoPorPresentismoNormal
     var faltas = 0 
-    method sueldoNeto(categoría) {
-      return categoría.sueldoNeto()
-    }
+
 
     method sueldoNeto() {
       return categoria.sueldoNeto()
@@ -63,10 +61,10 @@ method monto(empleado){
  
 object bonoPorPesentismoDemagógico {
   method monto(empleado){
-    return if (empleado.sueldoNeto(categoría) < 18000){
+    return if (empleado.sueldoNeto() < 18000){
     500
     }
-      else if (empleado.sueldoNeto(categoría) > 18000 ){
+      else if (empleado.sueldoNeto() > 18000 ){
         300
       }
     else{
@@ -83,6 +81,6 @@ object bonoPorPresentismoNulo {
 
 object bonoPorResultadoPorcentaje{
   method monto(empleado) {
-    return empleado.sueldoNeto(categoría) * 0.1
+    return empleado.sueldoNeto() * 0.1
   }
 }
