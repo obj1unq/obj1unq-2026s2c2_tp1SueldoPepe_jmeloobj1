@@ -13,7 +13,7 @@ object pepe {
     }
 
     method sueldo() {
-      return self.sueldoNeto() + bonoPorResultados.montoPara(self) + bonoPorPresentismo.monto(self)
+      return self.sueldoNeto() + bonoPorResultados.monto(self) + bonoPorPresentismo.monto(self)
     }
 
     method faltas() {
@@ -37,13 +37,44 @@ object gerente{
 }
 
 
-object bonoPorPresentismoAjuste(empleado){
-  empleado.faltas()
+object bonoPorPresentismoAjuste{
+  method monto(empleado){
+  return if (empleado.faltas() == 0){
+    100
+  }
+  else{
+    0
+  }
 }
-object bonoPorPresentismoNormal(empleado) {
-
+}
+object bonoPorPresentismoNormal() {
+method monto(empleado){
+  return  if (empleado.faltas()==0){
+      2000
+  }
+  else if (empleado.faltas() == 1){
+    1000
+  }
+  else{
+    0
+  }
+}
 }
  
-object  {
-  
+object bonoPorPesentismoDemagógico {
+  method monto(empleado){
+    return if (empleado.sueldoNeto(categoría) < 18000){
+      else if (empleado.sueldoNeto(categoría) > 18000 ){
+        300
+      }
+    else{
+    0
+    }
+  } 
+}
+
+object bonoPorPresentismoNulo {
+  method monto(empleado){
+    return 0
+  }
 }
