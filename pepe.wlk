@@ -16,6 +16,10 @@ object pepe {
       return self.sueldoNeto() + bonoPorResultados.montoPara(self) + bonoPorPresentismo.monto(self)
     }
 
+    method faltas() {
+      return faltas
+    }
+
     
 
 }
@@ -33,7 +37,9 @@ object gerente{
 }
 
 
-object 
+object bonoPorPresentismoAjuste(empleado){
+  empleado.faltas()
+}
 object bonoPorPresentismoNormal(empleado) {
 
 }
