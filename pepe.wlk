@@ -1,9 +1,16 @@
 object pepe {
-
-    var categoria = cadete
-    var bonoPorResultados = bonoResultado
-    var bonoPorPresentismo = bonoPresentismo
+    var categoria = gerente
+    var bonoPorResultados = bonoPorResultadoNulo
+    var bonoPorPresentismo = bonoPorPresentismoNulo
     var faltas = 0 
+
+method categoria() {
+  return categoria
+}
+
+method categoria(_categoria) {
+  categoria = _categoria
+}
 
   method bonoPorResultados() {
     return bonoPorResultados
@@ -12,26 +19,27 @@ object pepe {
   method bonoPorResultados(_bonoPorResultado) {
     bonoPorResultados = _bonoPorResultado
   }
+
   method bonoPorPresentismo() {
     return bonoPorPresentismo
   }
 
-method bonoPorPresentismo(_bonoPorPresentismo){
-  bonoPorPresentismo = _bonoPorPresentismo
-}
+   method bonoPorPresentismo(_bonoPorPresentismo){
+        bonoPorPresentismo = _bonoPorPresentismo
+   }
 
-    method sueldoNeto() {
-      return categoria.sueldoNeto()
-    }
-
+  
     method sueldo() {
-      return self.sueldoNeto() + bonoPorResultados.monto(self) + bonoPorPresentismo.monto(self)
+      return categoria.sueldoNeto() + bonoPorResultados.monto(self) + bonoPorPresentismo.monto(self)
     }
 
     method faltas() {
       return faltas
     }
 
+method faltas(_faltas) {
+  faltas = _faltas
+}
     
 
 }
@@ -117,13 +125,26 @@ object bonoPorResultadoMontoFijo{
   }
 }
 
+object bonoPorResultadoNulo{
+  method monto(empleado) {
+    return 0
+  }
+}
+
 object moria{
   var categoria = cadete
-  var bonoPorResultado = bonoResultado
-  var faltas = 0
+  var bonoPorResultado = bonoPorResultadoNulo
+  
+method categoria() {
+  return categoria
+}
+
+method categoria(_categoria) {
+  categoria = _categoria
+}
 
   method sueldo(){
-    return self.sueldoNeto(categoria) * 1.3 + bonoResultado
+    return  categoria.sueldoNeto() * 1.3 + bonoPorResultado 
   }
 
   method bonoPorResultado() {
@@ -137,8 +158,69 @@ object moria{
 }
 
 object vendedor{
+  var tieneMuchasVentas = false 
+  
   method sueldoNeto(){
-    return 16000
+    return if (tieneMuchasVentas){
+      (16000 * 1.25)
+    }
+    else{  
+      16000  
+      }
   } 
   
+  method activarAumentoPorMuchasVentas() {
+    tieneMuchasVentas = true
+  }
+
+  method desactivarAumentoPorMuchasVentas() {
+    tieneMuchasVentas = false
+  }
+  
+}
+
+object medioTiempo {
+  
+  method categoriaBase(categoria) {
+    return (categoria.sueldoNeto() / 2)
+  }
+
+}
+
+object roque{
+  var sueldoNeto = 20000
+  var bonoPorResultados = bonoPorResultadoNulo
+
+  method sueldo() {
+    return sueldoNeto + bonoPorResultados + 9000
+  }
+
+  method sueldo(_sueldoNeto) {
+    sueldoNeto = _sueldoNeto
+  }
+
+  method bonoPorResultados() {
+    return bonoPorResultados
+  }
+
+  method bonoPorResultados(_bonoPorResultados) {
+    bonoPorResultados = _bonoPorResultados
+  }
+}
+
+object ernesto {
+  var categoria = cadete 
+  var bonoPorPresentismo = bonoPorPresentismoNulo
+  method sueldo() {
+    return categoria.sueldoNeto() + bonoPorPresentismo
+  }
+
+  method categoria() {
+    return categoria
+  }
+
+  method categoria(_categoria) {
+    categoria = _categoria
+  }
+
 }
