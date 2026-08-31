@@ -20,7 +20,7 @@ El _neto_ depende de la categoría de la persona, y se tienen al menos: las pers
 
 ### Bono por resultados
 
-Pepe tiene un bono por resultados que va cambiando a lo largo del tiempo. Ser tienen tres formas de calcular el **bono por resultados**:  
+Pepe tiene un bono por resultados que va cambiando a lo largo del tiempo. Se tienen tres formas de calcular el **bono por resultados**:  
 * _Porcentaje_: 10% sobre el neto.  
 * _Monto fijo_: $800 fijos.
 * _Nulo_: nada.
@@ -110,3 +110,5 @@ Agregar dos personas más, según lo que se detalla a continuación.
     
 - Dibujar un diagrama estático donde se vea la relación entre los objetos y los tipos polimórficos
 - Encontrar (en toda la solución) un mensaje que sea una orden y otro que sea una consulta
+
+
