@@ -48,7 +48,7 @@ object moria {
 object ernesto {
   var categoria = cadete
   var bonoPorPresentismo = bonoPorPresentismoNulo
-  var compañero = compañeroNoAsignado
+  var compañero = pepe
   
   method sueldo() = compañero.sueldoNeto() + bonoPorPresentismo.monto(self)
   
@@ -74,10 +74,6 @@ object roque {
   var bonoPorResultados = bonoPorResultadoNulo
   
   method sueldo() = (sueldoNeto + bonoPorResultados) + 9000
-  
-  method sueldo(_sueldoNeto) {
-    sueldoNeto = _sueldoNeto
-  }
   
   method bonoPorResultados() = bonoPorResultados
   
@@ -148,7 +144,5 @@ object bonoPorResultadoMontoFijo {
 object bonoPorResultadoNulo {
   method monto(empleado) = 0
 }
-
-
 
 
