@@ -4,7 +4,8 @@ object pepe {
   var bonoPorResultados = bonoPorResultadoNulo
   var bonoPorPresentismo = bonoPorPresentismoNulo
   var faltas = 0
-  
+
+
   method categoria(_categoria) {
     categoria = _categoria
   }
@@ -17,15 +18,17 @@ object pepe {
     bonoPorPresentismo = _bonoPorPresentismo
   }
   
-  method sueldo() = (categoria.sueldoNeto() + bonoPorResultados.monto(
-    self
-  )) + bonoPorPresentismo.monto(self)
+  method sueldo() = (self.sueldoNeto() + bonoPorResultados.monto(self)) + bonoPorPresentismo.monto(self) 
   
   method faltas() = faltas
   
   method faltas(_faltas) {
     faltas = _faltas
   }
+
+method sueldoNeto() {
+  return categoria.sueldoNeto()
+}
 }
 
 object moria {
@@ -36,13 +39,17 @@ object moria {
     categoria = _categoria
   }
   
-  method sueldo() = (categoria.sueldoNeto() * 1.3) + bonoPorResultado.monto(
-    self
-  )
+  method sueldo() = self.sueldoNeto() + bonoPorResultado.monto(self)
   
   method bonoPorResultado(_bonoPorResultado) {
     bonoPorResultado = _bonoPorResultado
   }
+
+  method sueldoNeto() {
+  return categoria.sueldoNeto() * 1.3
+}
+
+ 
 }
 
 object ernesto {
@@ -50,13 +57,16 @@ object ernesto {
   var bonoPorPresentismo = bonoPorPresentismoNulo
   var compañero = pepe
   
-  method sueldo() = compañero.sueldoNeto() + bonoPorPresentismo.monto(self)
+  method sueldo() = self.sueldoNeto() + bonoPorPresentismo.monto(self)
   
   method compañero(_compañero) {
     compañero = _compañero
   }
-  
-  method categoria() = categoria
+
+  method sueldoNeto() {
+    return compañero.sueldoNeto()
+  }
+
   
   method categoria(_categoria) {
     categoria = _categoria
@@ -79,6 +89,10 @@ object roque {
   
   method bonoPorResultados(_bonoPorResultados) {
     bonoPorResultados = _bonoPorResultados
+  }
+
+  method sueldoNeto() {
+    return sueldoNeto
   }
 } //CATEGORÍAS
 
@@ -107,7 +121,9 @@ object vendedor {
 
 object medioTiempo {
   method categoriaBase(categoria) = categoria.sueldoNeto() / 2
-} //BONO X PRESENTISMO
+} 
+
+//BONO X PRESENTISMO
 
 object bonoPorPresentismoAjuste {
   method monto(empleado) = if (empleado.faltas() == 0) 100 else 0
@@ -122,7 +138,7 @@ object bonoPorPresentismoNormal {
 }
 
 object bonoPorPesentismoDemagógico {
-  method monto(empleado) = if (empleado.sueldoNeto() < 18000) {
+  method monto(empleado) = if ((empleado.sueldoNeto()) < 18000) {
     500
   } else {
     if (empleado.sueldoNeto() > 18000) 300 else 0
@@ -131,7 +147,9 @@ object bonoPorPesentismoDemagógico {
 
 object bonoPorPresentismoNulo {
   method monto(empleado) = 0
-} //BONO X RESULTADO
+} 
+
+//BONO X RESULTADO
 
 object bonoPorResultadoPorcentaje {
   method monto(empleado) = empleado.sueldoNeto() * 0.1

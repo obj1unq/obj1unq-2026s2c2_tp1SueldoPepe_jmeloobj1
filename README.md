@@ -105,10 +105,19 @@ Agregar dos personas más, según lo que se detalla a continuación.
 
 - Describir los polimorfismos en tu solución, detallando:
   - el **tipo** de los objetos polimórficos
+
+  el **tipo** polimófico es empleado y Bono
   - los mensajes que componen ese tipo
+  el mensaje es sueldo() para empleado y monto(empleado) para los tipo Bono
   - los **emisores** de los mensajes polimórficos
     
-- Dibujar un diagrama estático donde se vea la relación entre los objetos y los tipos polimórficos
+- Dibujar un diagrama estático donde se vea la relación entre los objetos y los tipos polimórfico
+
 - Encontrar (en toda la solución) un mensaje que sea una orden y otro que sea una consulta
+
+orden : ernesto.compañero(_compañero) que asigna un compañero del tipo empleado a ernesto
+
+consulta: faltas() que retorna la cantidad de faltas del empleado
+
 
 
